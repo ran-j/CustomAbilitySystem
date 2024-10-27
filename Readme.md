@@ -4,6 +4,9 @@
 
 This plugin provides a simple and flexible implementation of gameplay system based on Game Ability System (GAS) for Unreal Engine projects. It allows you to define abilities with various properties such as cooldowns, durations, costs, and custom effects. The system also includes an attribute component to manage character attributes like Health, Mana, Strength etc.
 
+## Note
+There is no replication support for this plugin yet. It is intended for single-player games or local multiplayer games.
+
 ## Features
 
 - **Ability Management**: Create and manage abilities with customizable effects.
@@ -26,3 +29,7 @@ This plugin provides a simple and flexible implementation of gameplay system bas
 3. **Regenerate Project Files**: Right-click on your `.uproject` file and select "Generate Visual Studio project files" (or your IDE equivalent).
 
 4. **Compile**: Open your project in your IDE and build to compile the plugin with your project.
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).

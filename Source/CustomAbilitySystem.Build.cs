@@ -1,3 +1,7 @@
+// Copyright (c) 2024 Ranieri Abreu (Ran-j)
+// 
+// This source code is licensed under the MIT License found in the
+// LICENSE file in the root directory of this source tree.
 using UnrealBuildTool;
 
 public class CustomAbilitySystem : ModuleRules
