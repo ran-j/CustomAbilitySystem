@@ -1,0 +1,21 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.0",
+  "FriendlyName": "Custom Ability System",
+  "Description": "A custom ability system.",
+  "Category": "Gameplay",
+  "CreatedBy": "Ranieri Abreu",
+  "CreatedByURL": "https://www.youtube.com/@ran-j",
+  "DocsURL": "",
+  "MarketplaceURL": "",
+  "SupportURL": "",
+  "EngineVersion": "5.4.0",
+  "Modules": [
+    {
+      "Name": "CustomAbilitySystem",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ]
+}
