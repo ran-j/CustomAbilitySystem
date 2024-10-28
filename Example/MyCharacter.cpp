@@ -63,6 +63,9 @@ void AMyCharacter::BeginPlay()
     FireballAbility.ActivationRequiredTags.Add(GameplayTags::Ability_Fireball_Weapon);
     FireballAbility.GrantedTags.Add(GameplayTags::State_ImmuneToFire);
     AbilityComponent->AddAbility(FireballAbility);
+
+    // event example
+    UGameplayEventManager::Get()->AddEventListener("Event.FireballCast", FGameplayEventDelegate::CreateUObject(this, &AMyCharacter::OnFireballCast));
 }
 
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
@@ -145,6 +148,12 @@ void AMyCharacter::ShieldDeactivate(AActor *OwnerActor)
     UE_LOG(LogTemp, Warning, TEXT("Shield deactivated!"));
 }
 
+void AMyCharacter::OnFireballCast(const FGameplayEventData &EventData)
+{
+    float Damage = EventData.OptionalFloat;
+    UE_LOG(LogTemp, Log, TEXT("Fireball cast! Damage: %f"), Damage);
+}
+
 void AMyCharacter::HealActivate(AActor *OwnerActor)
 {
     AMyCharacter *Character = Cast<AMyCharacter>(OwnerActor);
@@ -188,6 +197,12 @@ void AMyCharacter::FireballActivate(AActor *OwnerActor)
 
             // Fire logic here
             //
+
+            FGameplayEventData EventData;
+            EventData.EventTag = "Event.FireballCast";
+            EventData.Instigator = this;
+            EventData.OptionalFloat = Damage;
+            UGameplayEventManager::Get()->BroadcastEvent(EventData);
 
             float RemainingMana = Character->AttributeComponent->GetAttributeValue("Mana");
             UE_LOG(LogTemp, Log, TEXT("Fireball cast! Damage: %f, Remaining Mana: %f"), Damage, RemainingMana);

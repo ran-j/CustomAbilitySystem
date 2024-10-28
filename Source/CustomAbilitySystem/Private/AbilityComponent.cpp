@@ -1,5 +1,9 @@
 #include "../Public/AbilityComponent.h"
+
 #include "../Public/Ability.h"
+#include "../Public/GameplayEventData.h"
+#include "../Public/GameplayEventManager.h"
+
 #include "GameFramework/Actor.h"
 
 UAbilityComponent::UAbilityComponent()
@@ -67,6 +71,16 @@ bool UAbilityComponent::ActivateAbility(int32 AbilityID)
     for (const FName &GrantedTag : Ability->GrantedTags)
     {
         AddTag(GrantedTag);
+    }
+
+    if (!Ability->ActivationEventTag.IsNone())
+    {
+        FGameplayEventData EventData;
+        EventData.EventTag = Ability->ActivationEventTag;
+        EventData.Instigator = GetOwner();
+        //EventData.OptionalObject = Ability; //TODO ??
+        EventData.OptionalInt = AbilityID;
+        UGameplayEventManager::Get()->BroadcastEvent(EventData);
     }
 
     // { // old code

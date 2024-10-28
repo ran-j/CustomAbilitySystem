@@ -18,7 +18,7 @@ namespace GameplayTags
 
     // Character State Tags
     static const FName State_Stunned = FName("State.Stunned");
-    static const FName State_ImmuneToFire = FName("State.ImmuneToFire"); 
+    static const FName State_ImmuneToFire = FName("State.ImmuneToFire");
 }
 
 UCLASS()
@@ -49,10 +49,8 @@ protected:
     void ActivateAbility4();
 
     void HealActivate(AActor *OwnerActor);
-    void HealDeactivate(AActor *OwnerActor);
 
     void FireballActivate(AActor *OwnerActor);
-    void FireballDeactivate(AActor *OwnerActor);
 
     void DashActivate(AActor *OwnerActor);
     void DashDeactivate(AActor *OwnerActor);
@@ -62,4 +60,7 @@ protected:
 
     void ShieldActivate(AActor *OwnerActor);
     void ShieldDeactivate(AActor *OwnerActor);
+
+    UFUNCTION()
+    void OnFireballCast(const FGameplayEventData &EventData);
 };

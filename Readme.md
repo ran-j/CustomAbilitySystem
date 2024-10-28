@@ -6,12 +6,14 @@ This plugin provides a simple and flexible implementation of gameplay system bas
 
 ## Note
 There is no replication support for this plugin yet. It is intended for single-player games or local multiplayer games.
+There is no full support for Blueprint yet. It is intended for C++ projects.
 
 ## Features
 
 - **Ability Management**: Create and manage abilities with customizable effects.
 - **Attribute Handling**: Add and modify character attributes seamlessly.
 - **Gameplay Tags**: Utilize tags to control ability activation and interactions.
+- **Gameplay Events**: Emit and listen to gameplay events for custom logic.
 
 ## Getting Started
 

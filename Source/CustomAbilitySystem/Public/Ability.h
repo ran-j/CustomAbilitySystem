@@ -1,5 +1,5 @@
 // Copyright (c) 2024 Ranieri Abreu (Ran-j)
-// 
+//
 // This source code is licensed under the MIT License found in the
 // LICENSE file in the root directory of this source tree.
 #pragma once
@@ -31,6 +31,10 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ability")
     float Duration;
 
+    /** Event tag that this ability will triggers */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ability")
+    FName ActivationEventTag;
+
     /** Tags associated with this ability */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ability")
     TSet<FName> AbilityTags;
@@ -54,7 +58,18 @@ public:
     FAbilityEffectDelegate OnDeactivate;
 
     FAbility()
-        : AbilityID(0), AbilityName(TEXT("")), Cooldown(0.f), Cost(0.f), Duration(0.f), AbilityTags(TSet<FName>()), GrantedTags(TSet<FName>()), ActivationRequiredTags(TSet<FName>()), ActivationBlockedTags(TSet<FName>())
+        : AbilityID(0)
+        , AbilityName(TEXT(""))
+        , Cooldown(0.f)
+        , Cost(0.f)
+        , Duration(0.f)
+        , ActivationEventTag(NAME_None)
+        , AbilityTags()
+        , GrantedTags()
+        , ActivationRequiredTags()
+        , ActivationBlockedTags()
+        , OnActivate()
+        , OnDeactivate()
     {
     }
 };
